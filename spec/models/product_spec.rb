@@ -23,5 +23,35 @@ RSpec.describe Product, type: :model do
       )
       expect(product).not_to be_valid
     end
+
+    it 'must have a price' do
+      product = Product.new(
+        name: 'nil',
+        price: nil,
+        quantity: 1,
+        category: @category
+      )
+      expect(product).not_to be_valid
+    end
+
+    it 'must have a quantity' do
+      product = Product.new(
+        name: 'nil',
+        price: 10,
+        quantity: nil,
+        category: @category
+      )
+      expect(product).not_to be_valid
+    end
+
+    it 'must have a category' do
+      product = Product.new(
+        name: nil,
+        price: 10,
+        quantity: 1,
+        category: nil
+      )
+      expect(product).not_to be_valid
+    end
   end
 end
